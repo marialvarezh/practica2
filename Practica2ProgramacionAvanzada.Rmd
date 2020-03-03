@@ -1,0 +1,154 @@
+---
+title: "Práctica 2 – GitHub y Ciencia Reproducible"
+author: "Daniel Garcia Betancort y Maria Alvarez Hernandez"
+date: "2020-03-03"
+output: word_document
+bibliography: My_Collection.bib
+---
+
+### Lee el siguiente articulo:
+
+https://www.revistaecosistemas.net/index.php/ecosistemas/article/viewFile/1178/973
+
+## 2.1. Responde a las siguientes preguntas:
+
+Según el artículo "Ciencia Reproducible: qué, por qué, cómo" @Terrestre2016 
+
+### (1)	¿Qué es la Ciencia Reproducible? ¿En qué casos se consigue un 100% de la reproducibilidad?
+
+Es la ciencia que permite recrear un estudio científico por medio de un código, mostrando todos sus datos originales, resultados y figuras de este.
+
+El 100% de la reproducibilidad se consigue con estudios que son perfectamente reproducibles donde el código y por tanto sus datos originales, permiten regenerarlos.
+
+### (2)	¿Cuáles de los beneficios que se sugieren son para ti los más importantes? Justifica tu respuesta
+
+*La utilización del código permite la automatización*: con ello se consigue reproducir sin ningún esfuerzo datos repetitivos.
+
+*Muy fácil corregir y regenerar resultados, tablas y figuras*: debido al código que generará los datos originales, resultados y demás, es muy rápido y sencillo trabajar sobre ellos.
+
+*Ahorro de tiempo y esfuerzo al reutilizar código en otros proyectos*: gracias a la reproducibilidad podemos retomar o iniciar otro proyecto a partir del trabajo que ya se ha hecho sin ningún margen de error.
+
+*Los flujos de trabajo reproducibles facilitan la colaboración*: nos permite trabajar en grupos y englobar el trabajo de todos en un mismo repositorio, además de hacer correcciones y actualizar los mismos datos.
+
+### (3)	¿Por qué no hace todo el mundo Ciencia Reproducible?
+
+Precisamente para poder desarrollar este tipo de estudios reproducibles se requiere un esfuerzo inicial de aprendizaje. Es por el desconocimiento por el cuál no todo el mundo aplica la Ciencia Reproducible.
+
+## 2.2. Lee el artículo “¿Por qué usar GitHub? Diez pasos para disfrutar de GitHub y no morir en el intento” (Galiano 2018) Realiza las siguientes tareas:
+
+### 1.	Crea una cuenta en GitHub
+
+### 2.	Instala Git: https://happygitwithr.com/install-git.html
+
+### 3.	Preséntate: https://happygitwithr.com/hello-git.html**
+
+```{r}
+library(usethis)
+use_git_config(user.name = "Maria Alvarez", user.email = "mc.alvarez@edu.uah.es")
+```
+
+### 4.	Crea un repositorio en GitHub, haz un clon del repositorio y confirma que puedes push/pull desde la línea de comandos: https://happygitwithr.com/push-pull-github.html#push-pull-github
+
+### 5.	Conecta Rstudio a Git y Github: con el repositorio de GitHub clónalo a tu ordenador usando Rstudio. https://happygitwithr.com/rstudio-git-github.html#rstudio-git-github
+
+### 6.	Introducir en el archivo README.md “Esta es una línea que incluí desde mi Rstudio” y comete los cambios (commit), posteriormente “push” a GitHub y comprueba que los cambios se realizaron correctamente en la nube
+
+### 7.	Crea un nuevo archivo para las clases del bloque 3 y sálvalo en GitHub. ¡Ahora puedes tener todos tus códigos en la nube y trabajar fácilmente en grupo!
+
+## 2.3. Lee “¿Por qué usar GitHub? Diez pasos para disfrutar de GitHub y no morir en el intento”. Comprueba que tienes “claro” los siguientes conceptos:
+
+Según el artículo "¿Por qué usar GitHub?" @GaleanoPrieto2018
+
+**Repositorio**: es un directorio donde se pueden almacenar archivos (datos con código) tanto de manera pública como privada.
+
+**Rama**: una rama es un espacio independiente donde se almacenan archivos. Existe la rama principal, donde están los archivos originales del proyecto, y otras ramas que podemos crear si queremos trabajar sin modificar los datos originales.
+
+**Pull and push**:Push sirve para subir los cambios que hemos realizado a Github, y pull sirve para bajar los cambios que hayan realizado otros colaboradores de nuestro trabajo al mismo repositorio.
+
+**Fork**: sirve para hacer una copia de repositorios ajenos en nuestra cuenta de Github, sobre el que podremos trabajar y realizar los cambios que queramos. 
+
+## 2.4. RMarkdown. Genera un documento de word que contenga
+
+### 1.	Todas las opciones de sintaxis básicas de Pandoc Markdown: texto plano, cursiva, negrita, superíndice, subíndice, tachado, link, ecuación en línea de texto, ecuación en bloque, diferentes encabezados.
+texto plano  
+*texto en cursiva*  
+**texto en negrita**  
+superíndice^2^  
+subíndice~2~   
+~~tachada~~ 
+[GitHub](https://github.com)  
+$x^2 - \sqrt{25} = 20$
+ecuación en bloque 
+$$x^2 - \sqrt{25} = 20$$
+#encabezado1  
+##encabezado2  
+###encabezado3  
+
+### 2.	Escribe fragmentos de código con las siguientes características
+#### a.	Peguen las palabras “Hola” y “mundo” en una línea nueva
+
+```{r}
+paste("hola")
+paste("mundo")
+```
+
+#### b.	Peguen las palabras “Hola” y “mundo” en la misma línea de código
+```{r}
+c("hola","mundo")
+```
+
+#### c.	Peguen las palabras “Hola” y “mundo” en una línea nueva de código y que no muestren el resultado de R
+```{r eval=FALSE}
+paste("hola")  
+paste("mundo")
+```
+
+#### d.	Peguen las palabras “Hola” y “mundo” en una línea nueva de código y que no muestren el resultado de R y que no se muestre en el documento de Word.
+
+```{r echo=FALSE, eval=FALSE}
+paste("hola")  
+paste("mundo")
+```
+
+### 3.	Muestra una tabla y una gráfica en el archivo de salida, tomando alguno de los datos que vienen en R o alguno de sus paquetes. ¡¡Se creativo!! Usando (al menos): encabezados, explicaciones, ecuaciones, líneas de código en el texto y bloques de código.
+
+*Tabla 3.1. Datos de arboles de cerezo negro. Fuente: R y elaboración propia*
+```{r, eval=TRUE,echo=FALSE,message=FALSE,include=FALSE}
+library(flextable)#para tablas, instalarlo antes en la consola
+library(officer)#para tablas, instalarlo antes en la consola
+library(tidyverse)#para manejo de datos
+
+trees_tidy <- trees %>%
+  mutate_if(is.numeric,round,digits=0)
+
+##creamos la tabla####
+
+doc <- read_docx()
+trees_f <- trees_tidy %>%
+  rename("Circunferencia"=Girth,
+         "Altura"=Height,
+         "Volumen"=Volume)
+
+#La tabla
+
+ftable <- flextable(trees_f)
+ftable <- align(ftable,align="center",part="header")
+ftable <- align(ftable,align="center",part="body")
+ftable <- colformat_num(ftable,col_keys=c("Circunferencia","Altura","Volumen"),digits=0)
+ftable <- autofit(ftable,add_w = 0.5)
+
+doc2 <- body_add_flextable(doc,value=ftable)
+print(doc2,target="mitabla.docx")
+```
+
+*Grafica 3.1. Censo de población de Estados Unidos (1800-1950). Fuente: R y elaboración propia*
+```{r uspop, echo=FALSE}
+plot(uspop,col="red",xlab="Período",ylab="Nº de Población",main="Censo de población de Estados Unidos (1800-1950)")
+```
+
+*Grafica 3.2. Velocidad y distancias de parada de coches. Fuente: R y elaboración propia*
+```{r cars, echo=FALSE}
+plot(cars,col="orange",xlab="Velocidad (km/h)",ylab="Distancia de parada (m)",main="Velocidad y distancias de parada de coches")
+```
+
+## Bibliografía 
